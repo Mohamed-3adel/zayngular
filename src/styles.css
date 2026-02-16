@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+@import 'flowbite/src/themes/default';
+
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+@utility container {
+  margin: 0 auto;
+}
+
+@layer components {
+  .elite-input {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5;
+  }
+  .elite-lable {
+    @apply block mb-2 text-sm font-medium text-gray-900;
+  }
+  .card {
+    @apply relative border border-gray-200 rounded shadow hover:shadow-lg transition;
+  }
+  .btn-elite {
+    @apply relative overflow-hidden
+      px-[1.6rem] py-[0.6rem]
+      rounded-xl
+      font-semibold text-white
+      bg-gradient-to-br from-blue-600 to-indigo-700
+      transition-all duration-300 ease-out
+      focus-visible:outline-none
+      cursor-pointer;
+
+    box-shadow:
+      0 10px 25px rgba(37, 99, 235, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  .btn-elite:disabled {
+    @apply opacity-60 cursor-not-allowed pointer-events-none
+    bg-gradient-to-br from-indigo-400 to-indigo-500;
+  }
+
+  .btn-elite:hover {
+    @apply -translate-y-[1px];
+    box-shadow: 0 14px 35px rgba(37, 99, 235, 0.45);
+  }
+
+  .btn-elite:active {
+    @apply translate-y-0;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+  }
+
+  .btn-elite::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .btn-elite:hover::before {
+    transform: translateX(100%);
+  }
+
+  .btn-elite:focus-visible {
+    box-shadow:
+      0 0 0 3px rgba(37, 99, 235, 0.5),
+      0 10px 25px rgba(37, 99, 235, 0.35);
+  }
+
+  .dark .btn-elite {
+    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.6);
+  }
+
+  .tw-pagination .ngx-pagination {
+    @apply flex items-center gap-2;
+  }
+
+  .tw-pagination .ngx-pagination li {
+    @apply rounded-lg border border-gray-300 px-4 py-2 text-sm 
+         text-gray-700 cursor-pointer transition-all duration-200;
+  }
+
+  .tw-pagination .ngx-pagination li:hover {
+    @apply bg-gray-100;
+  }
+
+  .tw-pagination .ngx-pagination .current {
+    @apply bg-blue-600 text-white border-blue-600 font-semibold;
+  }
+
+  .tw-pagination .ngx-pagination .disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .tw-pagination .ngx-pagination a {
+    @apply no-underline text-inherit;
+  }
+}

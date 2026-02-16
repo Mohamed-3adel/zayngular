@@ -1,0 +1,10 @@
+<section class="pb-16">
+  <div class="container mx-auto xl:w-[90%]">
+    <h2 class="text-2xl text-indigo-600 font-medium">Populer Products</h2>
+    <div class="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      @for (product of productList().slice(0,12); track product.id) {
+      <app-card [productData]="product"></app-card>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+<section class="container px-4 py-6 bg-white">
+  <nav class="text-sm text-gray-500 mb-4">
+    <span class="hover:text-gray-700 cursor-pointer">Home</span>
+    <span class="mx-2">/</span>
+    <span class="text-indigo-800 font-medium">Categories</span>
+  </nav>
+
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <h1 class="text-3xl font-bold text-indigo-800">All Categories</h1>
+  </div>
+</section>
+
+<section class="container mx-auto px-4 pb-12">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <aside class="hidden lg:block">
+      <div class="bg-white border rounded-lg p-5 space-y-6 sticky top-24">
+        <h3 class="text-lg font-semibold text-gray-800">Categories</h3>
+
+        <ul class="space-y-2 text-sm">
+          @for (category of categoriesList(); track category._id) {
+            <li
+              class="flex items-center justify-between text-gray-600 hover:text-green-600 cursor-pointer"
+            >
+              <span>{{ category.name }}</span>
+              <span class="text-xs bg-gray-100 px-2 py-0.5 rounded-full"> → </span>
+            </li>
+          }
+        </ul>
+      </div>
+    </aside>
+
+    <main class="lg:col-span-3">
+      <div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+        @for (category of categoriesList(); track category._id) {
+          <div
+            class="group bg-white border rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer"
+          >
+            <div class="h-32 bg-gray-50 flex items-center justify-center">
+              <img
+                [src]="category.image"
+                [alt]="category.name"
+                class="h-20 w-full object-contain group-hover:scale-110 transition"
+              />
+            </div>
+
+            <div class="p-3 text-center">
+              <h3 class="text-sm font-medium text-indigo-600">
+                {{ category.name }}
+              </h3>
+            </div>
+          </div>
+        }
+      </div>
+    </main>
+  </div>
+</section>

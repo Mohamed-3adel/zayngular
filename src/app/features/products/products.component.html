@@ -1,0 +1,86 @@
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto xl:w-[90%] px-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 mx-auto">
+      <div class="mx-auto">
+        <h2 class="text-6xl font-bold text-indigo-600">Our Products</h2>
+        <p class="mt-2 text-gray-600 text-sm max-w-md">
+          Discover high-quality products carefully selected just for you
+        </p>
+      </div>
+    </div>
+    <div class="my-6 w-1/2 mx-auto bg-gray-200 shadow">
+      <input
+        type="search"
+        id="search "
+        class="elite-input"
+        placeholder="search..."
+        [(ngModel)]="term"
+      />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      @for (product of productsList() | paginate: pagination | search: term; track product.id) {
+        <div
+          class="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+        >
+          <app-card [productData]="product"></app-card>
+        </div>
+      } @empty {
+        <div class="col-span-5 w-full py-16 mx-auto">
+          <div
+            class="max-w-md mx-auto text-center bg-linear-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl p-12 shadow-xl border border-indigo-100"
+          >
+            <div class="relative mb-6">
+              <div
+                class="absolute inset-0 bg-indigo-200 rounded-full blur-2xl opacity-30 animate-pulse"
+              ></div>
+              <div class="relative bg-white rounded-full p-6 inline-block shadow-lg">
+                <svg
+                  class="w-16 h-16 text-indigo-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800 mb-3">No Products Found</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              We couldn't find any products matching your criteria.<br />
+              Try adjusting your filters or search terms.
+            </p>
+
+            <div class="mt-8 flex justify-center gap-2">
+              <div class="w-2 h-2 bg-indigo-400 rounded-full animate-bounce"></div>
+              <div
+                class="w-2 h-2 bg-purple-400 rounded-full animate-bounce"
+                style="animation-delay: 0.1s"
+              ></div>
+              <div
+                class="w-2 h-2 bg-pink-400 rounded-full animate-bounce"
+                style="animation-delay: 0.2s"
+              ></div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="mt-14 flex justify-center">
+      <pagination-controls
+        id="products"
+        (pageChange)="pageChanged($event)"
+        (pageBoundsCorrection)="pageChanged($event)"
+        class="tw-pagination"
+      >
+      </pagination-controls>
+    </div>
+  </div>
+</section>

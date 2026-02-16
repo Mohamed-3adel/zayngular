@@ -1,0 +1,127 @@
+<footer
+  class="bg-surface-light dark:bg-gray-200 border-t border-gray-200 dark:border-slate-800 animate-fade-up"
+>
+  <div class="w-11/12 max-w-7xl mx-auto py-10 space-y-10">
+    <!-- Newsletter -->
+    <div class="space-y-3 max-w-xl mx-auto text-center">
+      <h2 class="text-2xl font-semibold text-text-light dark:text-text-dark">
+        Join our newsletter
+      </h2>
+      <p class="text-sm text-slate-500 dark:text-slate-400">
+        Get updates, offers and app download link directly to your email.
+      </p>
+
+      <form class="space-y-2">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            required
+            class="w-full peer rounded-lg px-4 py-2 border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-white dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary outline-none invalid:border-red-500 invalid:focus:ring-red-500"
+            placeholder="Email address"
+          />
+
+          <button
+            type="submit"
+            class="btn-elite whitespace-nowrap flex items-center justify-center select-none"
+          >
+            Subscribe
+          </button>
+        </div>
+
+        <!-- Error State -->
+        <p class="hidden text-xs text-red-500 peer-invalid:block">
+          Please enter a valid email address
+        </p>
+      </form>
+    </div>
+
+    <!-- Divider -->
+    <div class="h-px bg-gray-300 dark:bg-slate-800"></div>
+
+    <!-- Links + Social -->
+    <div class="flex flex-col md:flex-row justify-between gap-8">
+      <!-- Footer Links -->
+      <div class="flex gap-6 text-sm">
+        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition"> About </a>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition"> Privacy </a>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition"> Terms </a>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="flex gap-4">
+        <a class="text-slate-500 hover:text-primary transition" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a class="text-slate-500 hover:text-primary transition" aria-label="Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a class="text-slate-500 hover:text-primary transition" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a class="text-slate-500 hover:text-primary transition" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Payment + Stores -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-sm text-text-light dark:text-text-dark"> Payment partners </span>
+
+        <img
+          src="/assets/images/amazon-pay.png"
+          alt="Amazon Pay"
+          loading="lazy"
+          class="h-6 opacity-70 hover:opacity-100 transition"
+        />
+
+        <img
+          src="/assets/images/American-Express-Color.png"
+          alt="American Express"
+          loading="lazy"
+          class="h-6 opacity-70 hover:opacity-100 transition"
+        />
+
+        <img
+          src="/assets/images/paypal.png"
+          alt="PayPal"
+          loading="lazy"
+          class="h-6 opacity-70 hover:opacity-100 transition"
+        />
+
+        <img
+          src="/assets/images/mastercard.webp"
+          alt="Mastercard"
+          loading="lazy"
+          class="h-6 opacity-70 hover:opacity-100 transition"
+        />
+      </div>
+
+      <div class="flex gap-3">
+        <img
+          src="/assets/images/get-google-play.png"
+          alt="Get it on Google Play"
+          width="135"
+          height="40"
+          loading="lazy"
+          class="h-9 cursor-pointer hover:scale-105 transition"
+        />
+
+        <img
+          src="/assets/images/get-apple-store.png"
+          alt="Download on the App Store"
+          loading="lazy"
+          width="120"
+          height="40"
+          class="h-9 cursor-pointer hover:scale-105 transition"
+        />
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center text-xs text-slate-500 dark:text-slate-400">
+      © 2026 Zayngular. All rights reserved.
+    </div>
+  </div>
+</footer>

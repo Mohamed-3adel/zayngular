@@ -1,0 +1,111 @@
+<div
+  class="card group flex flex-col justify-between overflow-hidden relative border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300"
+>
+  <!-- Promo Badge -->
+  @if (productData.priceAfterDiscount) {
+    <div
+      class="absolute top-2 left-2 z-20 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded cursor-pointer hover:bg-red-600 transition-colors"
+      [appPopup]="'promo'"
+      [data]="{
+        title: 'Special Discount!',
+        text:
+          'Get this item for only ' + productData.priceAfterDiscount + ' EGP. Limited time offer!',
+        image: productData.imageCover,
+      }"
+    >
+      SALE
+    </div>
+  }
+
+  <div class="relative overflow-hidden">
+    <!-- Image with RouterLink -->
+    <div
+      [routerLink]="['/details', productData.slug, productData.id]"
+      class="cursor-pointer bg-gray-100 flex items-center justify-center h-64"
+    >
+      <img
+        [src]="productData.imageCover"
+        [alt]="productData.title"
+        class="object-contain h-full w-full p-4 transition-transform duration-500 group-hover:scale-110"
+      />
+    </div>
+
+    <!-- Overlay Actions (Appears on Hover) -->
+    <div
+      class="absolute top-2 right-12.5 group-hover:right-2 flex flex-col gap-2 transition-all duration-300 z-10"
+    >
+      <!-- Quick View -->
+      <button
+        class="w-8 h-8 rounded-full bg-white shadow-md text-gray-600 hover:bg-green-500 hover:text-white flex items-center justify-center transition-colors"
+        [appPopup]="'quickView'"
+        [data]="productData"
+        (confirmed)="addToCartFromPopup($event)"
+        title="Quick View"
+      >
+        <i class="fas fa-eye"></i>
+      </button>
+
+      <!-- Zoom Image -->
+      <button
+        class="w-8 h-8 rounded-full bg-white shadow-md text-gray-600 hover:bg-blue-500 hover:text-white flex items-center justify-center transition-colors"
+        [appPopup]="'imageZoom'"
+        [data]="productData.imageCover"
+        title="Zoom Image"
+      >
+        <i class="fas fa-search-plus"></i>
+      </button>
+
+      <!-- Wishlist -->
+      <button
+        (click)="toggleWishlist(productData.id)"
+        [class]="isInWishlist(productData.id) ? 'bg-red-500 text-white' : 'bg-white text-gray-600'"
+        class="w-8 h-8 rounded-full shadow-md hover:bg-red-500 hover:text-white flex items-center justify-center transition-colors"
+        title="Add to Wishlist"
+      >
+        <i class="fas fa-heart"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="p-4 space-y-2 pb-14 flex flex-col h-full bg-white">
+    <h3 class="text-sm text-indigo-500 font-medium tracking-wide uppercase">
+      {{ productData.category.name }}
+    </h3>
+    <h4
+      [routerLink]="['/details', productData.slug, productData.id]"
+      class="font-semibold text-gray-800 text-lg leading-tight line-clamp-1 cursor-pointer hover:text-green-600 transition-colors"
+    >
+      {{ productData.title.split(' ').slice(0, 3).join(' ') }}
+    </h4>
+
+    <div class="flex items-center justify-between mt-auto">
+      <div class="flex flex-col">
+        @if (productData.priceAfterDiscount) {
+          <span class="text-xs text-gray-400 line-through">{{ productData.price }} EGP</span>
+          <span class="font-bold text-gray-800 text-lg"
+            >{{ productData.priceAfterDiscount }} EGP</span
+          >
+        } @else {
+          <span class="font-bold text-gray-800 text-lg">{{ productData.price }} EGP</span>
+        }
+      </div>
+
+      <span class="flex items-center text-sm text-gray-600 gap-1 bg-gray-50 px-2 py-1 rounded">
+        <i class="fas fa-star text-yellow-400"></i>
+        {{ productData.ratingsAverage }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Add to Cart (Bottom) -->
+  <div
+    class="absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10"
+  >
+    <button
+      (click)="addProductItemToCart(productData.id)"
+      class="w-full btn-elite flex items-center justify-center gap-2"
+    >
+      Add to Cart
+    </button>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<section class="pb-16">
+  <div *ngIf="isBrowser">
+    <owl-carousel-o [options]="minSliderCustomOptions">
+      <ng-template carouselSlide>
+        <div>
+          <div>
+            <img class="w-full" src="/assets/images/img1.avif" alt="banner" />
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div>
+          <div>
+            <img class="w-full" src="/assets/images/img2.avif" alt="banner" />
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div>
+          <div>
+            <img class="w-full" src="/assets/images/img3.avif" alt="banner" />
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div>
+          <div>
+            <img class="w-full" src="/assets/images/img4.avif" alt="banner" />
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div>
+          <div>
+            <img class="w-full" src="/assets/images/img5.avif" alt="banner" />
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <!-- Fallback for SSR -->
+  <div *ngIf="!isBrowser" class="w-full">
+    <img class="w-full" src="/assets/images/img1.avif" alt="banner" />
+  </div>
+</section>
